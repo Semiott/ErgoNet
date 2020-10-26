@@ -1,15 +1,15 @@
 {
   "contractName": "MGovernance",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MGovernance.sol\":\"MGovernance\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MGovernance.sol\":{\"keccak256\":\"0x3872018f4f55249e9e6953d6d5632647404071e7671a07f403172230fe4ca42c\",\"urls\":[\"bzz-raw://47f3dfb21c81c0bd28094b7814b1bbbf371d37a89d8c95cd989dec7fb8299be1\",\"dweb:/ipfs/QmfFb67L91g5hApjGcQFsZBUDW9qLw9KFbrapqSxwPLDmT\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a723158204018dda4829450c35cf483ee14bfc65af2d2c80778aafe0f120b82e92eb77ee564736f6c63430005100032",
-  "deployedBytecode": "0x6080604052600080fdfea265627a7a723158204018dda4829450c35cf483ee14bfc65af2d2c80778aafe0f120b82e92eb77ee564736f6c63430005100032",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/interfaces/MGovernance.sol\":\"MGovernance\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/interfaces/MGovernance.sol\":{\"keccak256\":\"0x3872018f4f55249e9e6953d6d5632647404071e7671a07f403172230fe4ca42c\",\"urls\":[\"bzz-raw://47f3dfb21c81c0bd28094b7814b1bbbf371d37a89d8c95cd989dec7fb8299be1\",\"dweb:/ipfs/QmfFb67L91g5hApjGcQFsZBUDW9qLw9KFbrapqSxwPLDmT\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820ee3102d4bff5c9ef98b63bcaef94ea89a5da40b6a675441470088e98c995e72b64736f6c63430005100032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a72315820ee3102d4bff5c9ef98b63bcaef94ea89a5da40b6a675441470088e98c995e72b64736f6c63430005100032",
   "sourceMap": "25:285:31:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:285:31;;;;;;;",
   "deployedSourceMap": "25:285:31:-;;;;;",
   "source": "pragma solidity ^0.5.2;\n\ncontract MGovernance {\n    /*\n      Allows calling the function only by a Governor.\n    */\n    modifier onlyGovernance()\n    {\n        // Pure modifier declarations are not supported. Instead we provide\n        // a dummy definition.\n        revert(\"UNIMPLEMENTED\");\n        _;\n    }\n}\n",
-  "sourcePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MGovernance.sol",
+  "sourcePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/interfaces/MGovernance.sol",
   "ast": {
-    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MGovernance.sol",
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/interfaces/MGovernance.sol",
     "exportedSymbols": {
       "MGovernance": [
         4404
@@ -138,7 +138,7 @@
     "src": "0:311:31"
   },
   "legacyAST": {
-    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MGovernance.sol",
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/interfaces/MGovernance.sol",
     "exportedSymbols": {
       "MGovernance": [
         4404
@@ -268,11 +268,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
   },
   "networks": {},
   "schemaVersion": "3.3.1",
-  "updatedAt": "2020-10-26T03:37:13.503Z",
+  "updatedAt": "2020-10-26T04:07:30.521Z",
   "devdoc": {
     "methods": {}
   },

@@ -1,15 +1,15 @@
 {
   "contractName": "PublicInputOffsets",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/public/PublicInputOffsets.sol\":\"PublicInputOffsets\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/public/PublicInputOffsets.sol\":{\"keccak256\":\"0xdab9026e5ca1a1485d8a8476011c090efb090d7490a96607f859b4ed43f5895a\",\"urls\":[\"bzz-raw://ebb72539c83d175b7c18e9c72b66929267e80d5103ec48dd0ea84977dfda0e95\",\"dweb:/ipfs/QmU5kpNPBe3QgYGfQtGfQ16MqREJCRtANBS3WYXPNyNJ2v\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820fce6264af4eabe53cbdc7ba1cb1c1793da996843b67c1b99e776c39185344a8a64736f6c63430005100032",
-  "deployedBytecode": "0x6080604052600080fdfea265627a7a72315820fce6264af4eabe53cbdc7ba1cb1c1793da996843b67c1b99e776c39185344a8a64736f6c63430005100032",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/public/PublicInputOffsets.sol\":\"PublicInputOffsets\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/public/PublicInputOffsets.sol\":{\"keccak256\":\"0xdab9026e5ca1a1485d8a8476011c090efb090d7490a96607f859b4ed43f5895a\",\"urls\":[\"bzz-raw://ebb72539c83d175b7c18e9c72b66929267e80d5103ec48dd0ea84977dfda0e95\",\"dweb:/ipfs/QmU5kpNPBe3QgYGfQtGfQ16MqREJCRtANBS3WYXPNyNJ2v\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820b425e2b72910ee63fa18d18be0a0cf5bb0b947b19cc5c56357e6eda9ac1c6dc964736f6c63430005100032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a72315820b425e2b72910ee63fa18d18be0a0cf5bb0b947b19cc5c56357e6eda9ac1c6dc964736f6c63430005100032",
   "sourceMap": "25:1070:38:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:1070:38;;;;;;;",
   "deployedSourceMap": "25:1070:38:-;;;;;",
   "source": "pragma solidity ^0.5.2;\n\ncontract PublicInputOffsets {\n    // The following constants are offsets of data expected in the public input.\n    uint256 internal constant OFFSET_LOG_BATCH_SIZE = 0;\n    uint256 internal constant OFFSET_N_TRANSACTIONS = 1;\n    uint256 internal constant OFFSET_GLOBAL_EXPIRATION_TIMESTAMP = 2;\n    uint256 internal constant OFFSET_VAULT_INITIAL_ROOT = 3;\n    uint256 internal constant OFFSET_VAULT_FINAL_ROOT = 4;\n    uint256 internal constant OFFSET_ORDER_INITIAL_ROOT = 5;\n    uint256 internal constant OFFSET_ORDER_FINAL_ROOT = 6;\n    uint256 internal constant OFFSET_VAULT_TREE_HEIGHT = 7;\n    uint256 internal constant OFFSET_ORDER_TREE_HEIGHT = 8;\n    uint256 internal constant OFFSET_MODIFICATION_DATA = 9;\n    uint256 internal constant APPLICATION_DATA_BATCH_ID_OFFSET = 0;\n    uint256 internal constant APPLICATION_DATA_PREVIOUS_BATCH_ID_OFFSET = 1;\n    uint256 internal constant APPLICATION_DATA_N_MODIFICATIONS_OFFSET = 2;\n    uint256 internal constant APPLICATION_DATA_MODIFICATIONS_OFFSET = 3;\n\n    uint256 internal constant N_WORDS_PER_MODIFICATION = 3;\n}\n",
-  "sourcePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/public/PublicInputOffsets.sol",
+  "sourcePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/public/PublicInputOffsets.sol",
   "ast": {
-    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/public/PublicInputOffsets.sol",
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/public/PublicInputOffsets.sol",
     "exportedSymbols": {
       "PublicInputOffsets": [
         4605
@@ -695,7 +695,7 @@
     "src": "0:1096:38"
   },
   "legacyAST": {
-    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/public/PublicInputOffsets.sol",
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/tokenswap-starkex/scalable-dex/contracts/src/public/PublicInputOffsets.sol",
     "exportedSymbols": {
       "PublicInputOffsets": [
         4605
@@ -1382,11 +1382,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
   },
   "networks": {},
   "schemaVersion": "3.3.1",
-  "updatedAt": "2020-10-26T03:37:13.510Z",
+  "updatedAt": "2020-10-26T04:07:30.534Z",
   "devdoc": {
     "methods": {}
   },
