@@ -1,0 +1,318 @@
+{
+  "contractName": "MWithdrawal",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MWithdrawal.sol\":\"MWithdrawal\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MWithdrawal.sol\":{\"keccak256\":\"0x8ae809bc1dffaad18bfa804efae4ec67dc89ac198322da2ca2bd03adc3a69f64\",\"urls\":[\"bzz-raw://2647e6b12854ca2035678241a57bb5716cd95f49cb678f61e5ed541813240e8f\",\"dweb:/ipfs/QmcsB7wHZAUF5Np6s7Pz1XbPnjkqUgaP417eAsqChPgh7o\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.2;\n\ncontract MWithdrawal {\n    function allowWithdrawal(\n        uint256 starkKey,\n        uint256 tokenId,\n        uint256 quantizedAmount\n    )\n        internal;\n\n}\n",
+  "sourcePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MWithdrawal.sol",
+  "ast": {
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MWithdrawal.sol",
+    "exportedSymbols": {
+      "MWithdrawal": [
+        4509
+      ]
+    },
+    "id": 4510,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4499,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:36"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4509,
+        "linearizedBaseContracts": [
+          4509
+        ],
+        "name": "MWithdrawal",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4508,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "allowWithdrawal",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4506,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4501,
+                  "name": "starkKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4508,
+                  "src": "86:16:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4500,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "86:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4503,
+                  "name": "tokenId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4508,
+                  "src": "112:15:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4502,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "112:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4505,
+                  "name": "quantizedAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4508,
+                  "src": "137:23:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4504,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "137:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "76:90:36"
+            },
+            "returnParameters": {
+              "id": 4507,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "183:0:36"
+            },
+            "scope": 4509,
+            "src": "52:132:36",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 4510,
+        "src": "25:162:36"
+      }
+    ],
+    "src": "0:188:36"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MWithdrawal.sol",
+    "exportedSymbols": {
+      "MWithdrawal": [
+        4509
+      ]
+    },
+    "id": 4510,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4499,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:36"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4509,
+        "linearizedBaseContracts": [
+          4509
+        ],
+        "name": "MWithdrawal",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4508,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "allowWithdrawal",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4506,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4501,
+                  "name": "starkKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4508,
+                  "src": "86:16:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4500,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "86:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4503,
+                  "name": "tokenId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4508,
+                  "src": "112:15:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4502,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "112:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4505,
+                  "name": "quantizedAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4508,
+                  "src": "137:23:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4504,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "137:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "76:90:36"
+            },
+            "returnParameters": {
+              "id": 4507,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "183:0:36"
+            },
+            "scope": 4509,
+            "src": "52:132:36",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 4510,
+        "src": "25:162:36"
+      }
+    ],
+    "src": "0:188:36"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.1",
+  "updatedAt": "2020-10-26T03:37:13.508Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

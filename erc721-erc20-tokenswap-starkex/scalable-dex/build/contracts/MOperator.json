@@ -1,0 +1,533 @@
+{
+  "contractName": "MOperator",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOperator",
+          "type": "address"
+        }
+      ],
+      "name": "registerOperator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "removedOperator",
+          "type": "address"
+        }
+      ],
+      "name": "unregisterOperator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOperator\",\"type\":\"address\"}],\"name\":\"registerOperator\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"removedOperator\",\"type\":\"address\"}],\"name\":\"unregisterOperator\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MOperator.sol\":\"MOperator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MOperator.sol\":{\"keccak256\":\"0x09c51ee9501dfcedd305e3bbbfa4c28fb5e8c7a32c9cb93b0e3ac8d22545a511\",\"urls\":[\"bzz-raw://043c072477fca8916f465d8218dce22ac909b752c90c1e66e36d0ce456e23b73\",\"dweb:/ipfs/QmUza17b2gvsDx8YtC1HNHJS5fKRzvyiqQc7vRi6ABBx45\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.2;\n\ncontract MOperator {\n\n    modifier onlyOperator()\n    {\n        // Pure modifier declarations are not supported. Instead we provide\n        // a dummy definition.\n        revert(\"UNIMPLEMENTED\");\n        _;\n    }\n\n    function registerOperator(address newOperator)\n        external;\n\n    function unregisterOperator(address removedOperator)\n        external;\n\n}\n",
+  "sourcePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MOperator.sol",
+  "ast": {
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MOperator.sol",
+    "exportedSymbols": {
+      "MOperator": [
+        4425
+      ]
+    },
+    "id": 4426,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4406,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:32"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4425,
+        "linearizedBaseContracts": [
+          4425
+        ],
+        "name": "MOperator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4413,
+              "nodeType": "Block",
+              "src": "79:158:32",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "554e494d504c454d454e544544",
+                        "id": 4409,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "203:15:32",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_8c564a77208356051586f074eb0024dc5ad62f6408ee7fbf7aef39d7281998bc",
+                          "typeString": "literal_string \"UNIMPLEMENTED\""
+                        },
+                        "value": "UNIMPLEMENTED"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_8c564a77208356051586f074eb0024dc5ad62f6408ee7fbf7aef39d7281998bc",
+                          "typeString": "literal_string \"UNIMPLEMENTED\""
+                        }
+                      ],
+                      "id": 4408,
+                      "name": "revert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        5209,
+                        5210
+                      ],
+                      "referencedDeclaration": 5210,
+                      "src": "196:6:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (string memory) pure"
+                      }
+                    },
+                    "id": 4410,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "196:23:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4411,
+                  "nodeType": "ExpressionStatement",
+                  "src": "196:23:32"
+                },
+                {
+                  "id": 4412,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "229:1:32"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4414,
+            "name": "onlyOperator",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 4407,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "72:2:32"
+            },
+            "src": "51:186:32",
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4419,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "registerOperator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4417,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4416,
+                  "name": "newOperator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4419,
+                  "src": "269:19:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4415,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "269:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "268:21:32"
+            },
+            "returnParameters": {
+              "id": 4418,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "306:0:32"
+            },
+            "scope": 4425,
+            "src": "243:64:32",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4424,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "unregisterOperator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4422,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4421,
+                  "name": "removedOperator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4424,
+                  "src": "341:23:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4420,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "341:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "340:25:32"
+            },
+            "returnParameters": {
+              "id": 4423,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "382:0:32"
+            },
+            "scope": 4425,
+            "src": "313:70:32",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4426,
+        "src": "25:361:32"
+      }
+    ],
+    "src": "0:387:32"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MOperator.sol",
+    "exportedSymbols": {
+      "MOperator": [
+        4425
+      ]
+    },
+    "id": 4426,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4406,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:32"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4425,
+        "linearizedBaseContracts": [
+          4425
+        ],
+        "name": "MOperator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4413,
+              "nodeType": "Block",
+              "src": "79:158:32",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "554e494d504c454d454e544544",
+                        "id": 4409,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "203:15:32",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_8c564a77208356051586f074eb0024dc5ad62f6408ee7fbf7aef39d7281998bc",
+                          "typeString": "literal_string \"UNIMPLEMENTED\""
+                        },
+                        "value": "UNIMPLEMENTED"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_8c564a77208356051586f074eb0024dc5ad62f6408ee7fbf7aef39d7281998bc",
+                          "typeString": "literal_string \"UNIMPLEMENTED\""
+                        }
+                      ],
+                      "id": 4408,
+                      "name": "revert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        5209,
+                        5210
+                      ],
+                      "referencedDeclaration": 5210,
+                      "src": "196:6:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (string memory) pure"
+                      }
+                    },
+                    "id": 4410,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "196:23:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4411,
+                  "nodeType": "ExpressionStatement",
+                  "src": "196:23:32"
+                },
+                {
+                  "id": 4412,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "229:1:32"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4414,
+            "name": "onlyOperator",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 4407,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "72:2:32"
+            },
+            "src": "51:186:32",
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4419,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "registerOperator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4417,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4416,
+                  "name": "newOperator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4419,
+                  "src": "269:19:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4415,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "269:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "268:21:32"
+            },
+            "returnParameters": {
+              "id": 4418,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "306:0:32"
+            },
+            "scope": 4425,
+            "src": "243:64:32",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4424,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "unregisterOperator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4422,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4421,
+                  "name": "removedOperator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4424,
+                  "src": "341:23:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4420,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "341:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "340:25:32"
+            },
+            "returnParameters": {
+              "id": 4423,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "382:0:32"
+            },
+            "scope": 4425,
+            "src": "313:70:32",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4426,
+        "src": "25:361:32"
+      }
+    ],
+    "src": "0:387:32"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.1",
+  "updatedAt": "2020-10-26T03:37:13.504Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

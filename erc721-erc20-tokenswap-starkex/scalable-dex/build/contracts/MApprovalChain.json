@@ -1,0 +1,1772 @@
+{
+  "contractName": "MApprovalChain",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MApprovalChain.sol\":\"MApprovalChain\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/components/GovernanceStorage.sol\":{\"keccak256\":\"0x67fb34740c25832ca4ebe572796b37744173dc6e41bedd89bcf0f86939195400\",\"urls\":[\"bzz-raw://4a4e89a296039dd310be02621be7caf655cd0962369156dce4733031ab2058eb\",\"dweb:/ipfs/QmXQT5hMWxUfRSxDURvKNdEkLUvDPyVSw8ia1NirtFzL3k\"]},\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/components/MainStorage.sol\":{\"keccak256\":\"0x714158b6b75b3da83c885e683ca772d104076c825bf8163dfe0d2901ea3c5796\",\"urls\":[\"bzz-raw://e4f33e90aef3cec159bdd2619afc7915392b610be661b070aeceb9ac4656faf2\",\"dweb:/ipfs/QmP7sHr4y1MLw7NUDvLp7YnQawYAKUJ4j1um2BBCFfq2MU\"]},\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/IFactRegistry.sol\":{\"keccak256\":\"0x7f4e47365a887730d676a98fa96cee9273abf09655bafe2a224c9a9398732214\",\"urls\":[\"bzz-raw://21223482a9890cd6ba8c733d891923fc12ca1c9d6f147212f77a2f8a0a0af52d\",\"dweb:/ipfs/QmWH8jxhSRVaEMyEY4XjwBPSGNZKM9xY2a7zh2bycKgUjH\"]},\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MApprovalChain.sol\":{\"keccak256\":\"0xb66336a0e5bc2f47be763f6ac478b3fc28fd75eb95bc8818e898431454adc6f8\",\"urls\":[\"bzz-raw://66452a84081bf629520f3fbd6a466e124a9086b0dc82e1e4018ec3cc01466f6d\",\"dweb:/ipfs/Qmawd9BSrJ2P89VRViQb4CoBwYBYPXUJhasb6UyWH3MENm\"]},\"/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/upgrade/ProxyStorage.sol\":{\"keccak256\":\"0x8328396a028395d9483b5e445c4ebd5c8b81aaa771b3f1ecbabb8d473fa0c229\",\"urls\":[\"bzz-raw://695e9498cd3f33b420a98a84af3b4634df224dc927cdae153498c5a77edf839c\",\"dweb:/ipfs/QmYhoTao3CDwzbAQeLU1u5oRR2X3PQgBVfk9BVkBkPdoiV\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.2;\n\nimport \"../components/MainStorage.sol\";\n\n/*\n  Implements a data structure that supports instant registration\n  and slow time-locked removal of entries.\n*/\ncontract MApprovalChain is MainStorage {\n    uint256 constant ENTRY_NOT_FOUND = uint256(~0);\n\n    /*\n      Adds the given verifier (entry) to the chain.\n      Fails if the size of the chain is already >= maxLength.\n      Fails if identifier is not identical to the value returned from entry.identify().\n    */\n    function addEntry(\n        ApprovalChainData storage chain, address entry, uint256 maxLength, string memory identifier)\n        internal;\n\n    /*\n      Returns the index of the verifier in the list if it exists and returns ENTRY_NOT_FOUND\n      otherwise.\n    */\n    function findEntry(address[] storage list, address entry)\n        internal view returns (uint256);\n\n    /*\n      Same as findEntry(), except that it reverts if the verifier is not found.\n    */\n    function safeFindEntry(address[] storage list, address entry)\n        internal view returns (uint256 idx);\n\n    /*\n      Updates the unlockedForRemovalTime field of the given verifier to\n        current time + removalDelay.\n      Reverts if the verifier is not found.\n    */\n    function announceRemovalIntent(\n        ApprovalChainData storage chain, address entry, uint256 removalDelay)\n        internal;\n\n    /*\n      Removes a verifier assuming the expected time has passed.\n    */\n    function removeEntry(ApprovalChainData storage chain, address entry)\n        internal;\n\n    /*\n      Verifies a given fact on all existing verifiers.\n      Reverts if the fact is not accepted by one or more verifiers.\n    */\n    function verifyFact(\n        ApprovalChainData storage chain, bytes32 fact, string memory noVerifiersErrorMessage,\n        string memory invalidFactErrorMessage)\n        internal view;\n}\n",
+  "sourcePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MApprovalChain.sol",
+  "ast": {
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MApprovalChain.sol",
+    "exportedSymbols": {
+      "MApprovalChain": [
+        4366
+      ]
+    },
+    "id": 4367,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4298,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:29"
+      },
+      {
+        "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/components/MainStorage.sol",
+        "file": "../components/MainStorage.sol",
+        "id": 4299,
+        "nodeType": "ImportDirective",
+        "scope": 4367,
+        "sourceUnit": 1599,
+        "src": "25:39:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 4300,
+              "name": "MainStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1598,
+              "src": "207:11:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_MainStorage_$1598",
+                "typeString": "contract MainStorage"
+              }
+            },
+            "id": 4301,
+            "nodeType": "InheritanceSpecifier",
+            "src": "207:11:29"
+          }
+        ],
+        "contractDependencies": [
+          1430,
+          1598,
+          5189
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4366,
+        "linearizedBaseContracts": [
+          4366,
+          1598,
+          5189,
+          1430
+        ],
+        "name": "MApprovalChain",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 4307,
+            "name": "ENTRY_NOT_FOUND",
+            "nodeType": "VariableDeclaration",
+            "scope": 4366,
+            "src": "225:46:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 4302,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "225:7:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "arguments": [
+                {
+                  "argumentTypes": null,
+                  "id": 4305,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "nodeType": "UnaryOperation",
+                  "operator": "~",
+                  "prefix": true,
+                  "src": "268:2:29",
+                  "subExpression": {
+                    "argumentTypes": null,
+                    "hexValue": "30",
+                    "id": 4304,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "269:1:29",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_0_by_1",
+                      "typeString": "int_const 0"
+                    },
+                    "value": "0"
+                  },
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_rational_minus_1_by_1",
+                    "typeString": "int_const -1"
+                  }
+                }
+              ],
+              "expression": {
+                "argumentTypes": [
+                  {
+                    "typeIdentifier": "t_rational_minus_1_by_1",
+                    "typeString": "int_const -1"
+                  }
+                ],
+                "id": 4303,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "nodeType": "ElementaryTypeNameExpression",
+                "src": "260:7:29",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_uint256_$",
+                  "typeString": "type(uint256)"
+                },
+                "typeName": "uint256"
+              },
+              "id": 4306,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "typeConversion",
+              "lValueRequested": false,
+              "names": [],
+              "nodeType": "FunctionCall",
+              "src": "260:11:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4318,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4316,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4309,
+                  "name": "chain",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4318,
+                  "src": "521:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                    "typeString": "struct MainStorage.ApprovalChainData"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4308,
+                    "name": "ApprovalChainData",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1509,
+                    "src": "521:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                      "typeString": "struct MainStorage.ApprovalChainData"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4311,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4318,
+                  "src": "554:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4310,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "554:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4313,
+                  "name": "maxLength",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4318,
+                  "src": "569:17:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4312,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "569:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4315,
+                  "name": "identifier",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4318,
+                  "src": "588:24:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 4314,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "588:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "511:102:29"
+            },
+            "returnParameters": {
+              "id": 4317,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "630:0:29"
+            },
+            "scope": 4366,
+            "src": "494:137:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4328,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "findEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4324,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4321,
+                  "name": "list",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4328,
+                  "src": "780:22:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 4319,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "780:7:29",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 4320,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "780:9:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4323,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4328,
+                  "src": "804:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4322,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "804:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "779:39:29"
+            },
+            "returnParameters": {
+              "id": 4327,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4326,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4328,
+                  "src": "850:7:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4325,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "850:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "849:9:29"
+            },
+            "scope": 4366,
+            "src": "761:98:29",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4338,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "safeFindEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4334,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4331,
+                  "name": "list",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4338,
+                  "src": "982:22:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 4329,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "982:7:29",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 4330,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "982:9:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4333,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4338,
+                  "src": "1006:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4332,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1006:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "981:39:29"
+            },
+            "returnParameters": {
+              "id": 4337,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4336,
+                  "name": "idx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4338,
+                  "src": "1052:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4335,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1052:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1051:13:29"
+            },
+            "scope": 4366,
+            "src": "959:106:29",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4347,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "announceRemovalIntent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4345,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4340,
+                  "name": "chain",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4347,
+                  "src": "1278:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                    "typeString": "struct MainStorage.ApprovalChainData"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4339,
+                    "name": "ApprovalChainData",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1509,
+                    "src": "1278:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                      "typeString": "struct MainStorage.ApprovalChainData"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4342,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4347,
+                  "src": "1311:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4341,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1311:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4344,
+                  "name": "removalDelay",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4347,
+                  "src": "1326:20:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4343,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1326:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1268:79:29"
+            },
+            "returnParameters": {
+              "id": 4346,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1364:0:29"
+            },
+            "scope": 4366,
+            "src": "1238:127:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4354,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4352,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4349,
+                  "name": "chain",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4354,
+                  "src": "1470:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                    "typeString": "struct MainStorage.ApprovalChainData"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4348,
+                    "name": "ApprovalChainData",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1509,
+                    "src": "1470:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                      "typeString": "struct MainStorage.ApprovalChainData"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4351,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4354,
+                  "src": "1503:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4350,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1503:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1469:48:29"
+            },
+            "returnParameters": {
+              "id": 4353,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1534:0:29"
+            },
+            "scope": 4366,
+            "src": "1449:86:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4365,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyFact",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4363,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4356,
+                  "name": "chain",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4365,
+                  "src": "1707:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                    "typeString": "struct MainStorage.ApprovalChainData"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4355,
+                    "name": "ApprovalChainData",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1509,
+                    "src": "1707:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                      "typeString": "struct MainStorage.ApprovalChainData"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4358,
+                  "name": "fact",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4365,
+                  "src": "1740:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 4357,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1740:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4360,
+                  "name": "noVerifiersErrorMessage",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4365,
+                  "src": "1754:37:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 4359,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1754:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4362,
+                  "name": "invalidFactErrorMessage",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4365,
+                  "src": "1801:37:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 4361,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1801:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1697:142:29"
+            },
+            "returnParameters": {
+              "id": 4364,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1861:0:29"
+            },
+            "scope": 4366,
+            "src": "1678:184:29",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 4367,
+        "src": "180:1684:29"
+      }
+    ],
+    "src": "0:1865:29"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/interfaces/MApprovalChain.sol",
+    "exportedSymbols": {
+      "MApprovalChain": [
+        4366
+      ]
+    },
+    "id": 4367,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4298,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:29"
+      },
+      {
+        "absolutePath": "/Users/gokulalex/Apps/eth_apps/ErgoNet/starkex-contracts/scalable-dex/contracts/src/components/MainStorage.sol",
+        "file": "../components/MainStorage.sol",
+        "id": 4299,
+        "nodeType": "ImportDirective",
+        "scope": 4367,
+        "sourceUnit": 1599,
+        "src": "25:39:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 4300,
+              "name": "MainStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1598,
+              "src": "207:11:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_MainStorage_$1598",
+                "typeString": "contract MainStorage"
+              }
+            },
+            "id": 4301,
+            "nodeType": "InheritanceSpecifier",
+            "src": "207:11:29"
+          }
+        ],
+        "contractDependencies": [
+          1430,
+          1598,
+          5189
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4366,
+        "linearizedBaseContracts": [
+          4366,
+          1598,
+          5189,
+          1430
+        ],
+        "name": "MApprovalChain",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 4307,
+            "name": "ENTRY_NOT_FOUND",
+            "nodeType": "VariableDeclaration",
+            "scope": 4366,
+            "src": "225:46:29",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 4302,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "225:7:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "arguments": [
+                {
+                  "argumentTypes": null,
+                  "id": 4305,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "nodeType": "UnaryOperation",
+                  "operator": "~",
+                  "prefix": true,
+                  "src": "268:2:29",
+                  "subExpression": {
+                    "argumentTypes": null,
+                    "hexValue": "30",
+                    "id": 4304,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "269:1:29",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_0_by_1",
+                      "typeString": "int_const 0"
+                    },
+                    "value": "0"
+                  },
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_rational_minus_1_by_1",
+                    "typeString": "int_const -1"
+                  }
+                }
+              ],
+              "expression": {
+                "argumentTypes": [
+                  {
+                    "typeIdentifier": "t_rational_minus_1_by_1",
+                    "typeString": "int_const -1"
+                  }
+                ],
+                "id": 4303,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "lValueRequested": false,
+                "nodeType": "ElementaryTypeNameExpression",
+                "src": "260:7:29",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_uint256_$",
+                  "typeString": "type(uint256)"
+                },
+                "typeName": "uint256"
+              },
+              "id": 4306,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "typeConversion",
+              "lValueRequested": false,
+              "names": [],
+              "nodeType": "FunctionCall",
+              "src": "260:11:29",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4318,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4316,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4309,
+                  "name": "chain",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4318,
+                  "src": "521:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                    "typeString": "struct MainStorage.ApprovalChainData"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4308,
+                    "name": "ApprovalChainData",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1509,
+                    "src": "521:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                      "typeString": "struct MainStorage.ApprovalChainData"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4311,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4318,
+                  "src": "554:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4310,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "554:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4313,
+                  "name": "maxLength",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4318,
+                  "src": "569:17:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4312,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "569:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4315,
+                  "name": "identifier",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4318,
+                  "src": "588:24:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 4314,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "588:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "511:102:29"
+            },
+            "returnParameters": {
+              "id": 4317,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "630:0:29"
+            },
+            "scope": 4366,
+            "src": "494:137:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4328,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "findEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4324,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4321,
+                  "name": "list",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4328,
+                  "src": "780:22:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 4319,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "780:7:29",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 4320,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "780:9:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4323,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4328,
+                  "src": "804:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4322,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "804:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "779:39:29"
+            },
+            "returnParameters": {
+              "id": 4327,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4326,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4328,
+                  "src": "850:7:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4325,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "850:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "849:9:29"
+            },
+            "scope": 4366,
+            "src": "761:98:29",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4338,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "safeFindEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4334,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4331,
+                  "name": "list",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4338,
+                  "src": "982:22:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 4329,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "982:7:29",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 4330,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "982:9:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4333,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4338,
+                  "src": "1006:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4332,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1006:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "981:39:29"
+            },
+            "returnParameters": {
+              "id": 4337,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4336,
+                  "name": "idx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4338,
+                  "src": "1052:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4335,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1052:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1051:13:29"
+            },
+            "scope": 4366,
+            "src": "959:106:29",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4347,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "announceRemovalIntent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4345,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4340,
+                  "name": "chain",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4347,
+                  "src": "1278:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                    "typeString": "struct MainStorage.ApprovalChainData"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4339,
+                    "name": "ApprovalChainData",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1509,
+                    "src": "1278:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                      "typeString": "struct MainStorage.ApprovalChainData"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4342,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4347,
+                  "src": "1311:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4341,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1311:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4344,
+                  "name": "removalDelay",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4347,
+                  "src": "1326:20:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4343,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1326:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1268:79:29"
+            },
+            "returnParameters": {
+              "id": 4346,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1364:0:29"
+            },
+            "scope": 4366,
+            "src": "1238:127:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4354,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeEntry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4352,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4349,
+                  "name": "chain",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4354,
+                  "src": "1470:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                    "typeString": "struct MainStorage.ApprovalChainData"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4348,
+                    "name": "ApprovalChainData",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1509,
+                    "src": "1470:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                      "typeString": "struct MainStorage.ApprovalChainData"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4351,
+                  "name": "entry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4354,
+                  "src": "1503:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4350,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1503:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1469:48:29"
+            },
+            "returnParameters": {
+              "id": 4353,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1534:0:29"
+            },
+            "scope": 4366,
+            "src": "1449:86:29",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4365,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyFact",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4363,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4356,
+                  "name": "chain",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4365,
+                  "src": "1707:31:29",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                    "typeString": "struct MainStorage.ApprovalChainData"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4355,
+                    "name": "ApprovalChainData",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1509,
+                    "src": "1707:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ApprovalChainData_$1509_storage_ptr",
+                      "typeString": "struct MainStorage.ApprovalChainData"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4358,
+                  "name": "fact",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4365,
+                  "src": "1740:12:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 4357,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1740:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4360,
+                  "name": "noVerifiersErrorMessage",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4365,
+                  "src": "1754:37:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 4359,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1754:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4362,
+                  "name": "invalidFactErrorMessage",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4365,
+                  "src": "1801:37:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 4361,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1801:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1697:142:29"
+            },
+            "returnParameters": {
+              "id": 4364,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1861:0:29"
+            },
+            "scope": 4366,
+            "src": "1678:184:29",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 4367,
+        "src": "180:1684:29"
+      }
+    ],
+    "src": "0:1865:29"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.1",
+  "updatedAt": "2020-10-26T03:37:13.500Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
