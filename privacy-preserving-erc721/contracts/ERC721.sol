@@ -24,9 +24,9 @@ contract ERC721Enumerable is ERC721Basic {
  * @title ERC-721 Non-Fungible Token Standard, optional metadata extension
  */
 contract ERC721Metadata is ERC721Basic {
-  function name() external view returns (string _name);
-  function symbol() external view returns (string _symbol);
-  function tokenURI(uint256 _tokenId) public view returns (string);
+  function name() external view returns (string memory _name);
+  function symbol() external view returns (string memory _symbol);
+  function tokenURI(uint256 _tokenId) public view returns (string memory);
 }
 
 
