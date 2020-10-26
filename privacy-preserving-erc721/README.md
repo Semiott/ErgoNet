@@ -1,5 +1,5 @@
 
-## Key Words
+## Introduction
 - Smart contracts standards.
 - Non-fungible token.
 - ERC721
@@ -8,7 +8,6 @@
 - Solidity
 - Web3.0
 - Ethereum
-- CryptoKitties
 - Smart contracts
 
 
@@ -27,32 +26,3 @@ ERC-721 is a free, open standard that describes how to build non-fungible or uni
 
 ## THE STANDARD
 ERC-721 defines a minimum interface a smart contract must implement to allow unique tokens to be managed, owned, and traded. It does not mandate a standard for token metadata or restrict adding supplemental functions. 
-
-## High Level Goals Of This Sprint
-- Learn the defferince between the non-fungible tokens vs the normal token.
-- Learn more about the smart contracts and implement a complex smart contracts.
-- Learn how to use truffle framework to make your life as Ethereum developer more easier.
-- Learn how to deal with your contract form your web app.
-- Practice using web3 to control every thing on your contract.
-
-## Getting Started And Project Set Up
-Get the smart contracts starter 
-- fork the repository that given to form the instructional team clone it to your computer 
-- open the project folder and run npm install to install the node dependencies.
-- open ganache and be sure to set the port in the settings to 8545 if you still don't have ganache installed on your machine you can install from [here]
-- if you don't have truffle installed globaly on your machine you need to install it by writing this command on terminal ```npm install -g truffle```
-
-## The Project
-### Bare Minimum Requirements
-- if you already have truffle installed globaly on your machine so run the smart contracts test using this command truffle test
-- to make the test pass you need to modify the methods that is located in ```~/contracts/ERC721BasicToken.sol ```
-- follow the comments and the test to implement a fully working smart contract.
-
-## Useful Links
-- [Truffle and ganache documentation]
-- [Ganache]
-- [Web3.0 readme]
-- [Using Infura with web3.0]
-- [ERC-721 website]
-
-
