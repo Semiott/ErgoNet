@@ -1369,11 +1369,19 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
   },
-  "networks": {},
+  "networks": {
+    "80001": {
+      "events": {},
+      "links": {},
+      "address": "0xC872eC436e18FcbB8F7Ddc50419B8d39e509D4C9",
+      "transactionHash": "0x8fb0945a197f18ecc44f8779d997f54c2f08e6b3c2c5ef5e0187dad55e1381fe"
+    }
+  },
   "schemaVersion": "3.3.1",
-  "updatedAt": "2020-10-26T03:44:34.058Z",
+  "updatedAt": "2020-10-26T04:03:31.167Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },
